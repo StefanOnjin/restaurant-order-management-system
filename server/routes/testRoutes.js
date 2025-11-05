@@ -3,7 +3,7 @@ const router = express.Router();
 const { pool } = require('../config/database'); 
 
 // =========================================
-// 📘 READ - Vrati sve redove
+//  READ - Vrati sve redove
 // =========================================
 router.get('/', async (req, res) => {
   try {
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 }); 
 
 // =========================================
-// 🟢 CREATE - Dodaj novi red
+//  CREATE - Dodaj novi red
 // =========================================
 router.post('/', async (req, res) => {
   try {
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 });
 
 // =========================================
-// 🟡 UPDATE - Izmeni postojeći red
+//  UPDATE - Izmeni postojeći red
 // =========================================
 router.put('/:id', async (req, res) => {
   try {
@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // =========================================
-// 🔴 DELETE - Obriši red
+//  DELETE - Obriši red
 // =========================================
 router.delete('/:id', async (req, res) => {
   try {

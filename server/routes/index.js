@@ -1,12 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-/**
- * CENTRALNI ROUTER
- * Sve route-ove registrujemo ovde
- */
-
-// Ovde ćeš dodavati nove route-ove kako projekat raste:
 
 // const userRoutes = require('./userRoutes');
 // router.use('/users', userRoutes);
@@ -20,7 +14,7 @@ const router = express.Router();
 const testRoutes = require('./testRoutes'); 
 router.use('/test', testRoutes); 
 
-// Default endpoint
+
 router.get('/', (req, res) => {
   res.json({
     message: 'Restaurant API - Backend radi! 🚀',
