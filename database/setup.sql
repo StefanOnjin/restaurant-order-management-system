@@ -2,12 +2,6 @@
 -- RESTAURANT DATABASE SETUP
 -- =============================================
 
--- Kreiraj bazu (pokreni ovo kao postgres korisnik)
--- CREATE DATABASE restaurant_db;
-
--- Konektuj se na restaurant_db bazu, pa pokreni ostale komande:
--- \c restaurant_db
-
 -- =============================================
 -- EXTENSIONS
 -- =============================================
@@ -15,7 +9,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- =============================================
--- TEST TABELA (za proveru konekcije)
+-- TEST TABELA 
 -- =============================================
 
 CREATE TABLE IF NOT EXISTS test_table (
@@ -25,8 +19,8 @@ CREATE TABLE IF NOT EXISTS test_table (
 );
 
 INSERT INTO test_table (message) VALUES
-  ('Backend i baza uspešno komuniciraju! ✅'),
-  ('PostgreSQL radi kako treba! 🚀');
+  ('Backend i baza uspešno komuniciraju! '),
+  ('PostgreSQL radi kako treba! ');
 
 -- =============================================
 -- PROVERA

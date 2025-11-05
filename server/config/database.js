@@ -8,10 +8,11 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  max: 20, // maksimalan broj konekcija u pool-u
+  max: 20, 
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
 });
+
 
 // Event listener za uspešnu konekciju
 pool.on('connect', () => {
