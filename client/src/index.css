@@ -6,8 +6,10 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   
-  /* Elegantna kombinacija - pastelne nijanse sa toplim akcentom */
-background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
 
 

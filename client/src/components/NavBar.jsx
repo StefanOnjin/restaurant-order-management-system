@@ -1,62 +1,72 @@
-import { useState } from "react"; 
-import { Link } from "react-router-dom" 
-import { ShoppingCart } from "lucide-react" 
-import './NavBar.css' 
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ShoppingCart } from 'lucide-react';
+import { useAuth } from './AuthContext';
+import './NavBar.css';
 
-function NavBar({user, cartCount}) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false) 
+function NavBar({ cartCount }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen); 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    return (
-      <nav className="navbar">
-        <div className="navbar-container">
-          
-          <Link to="/" className="navbar-logo">
-            🍕 Pizzeria Stefan
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          🍕 Pizzeria Stefan
+        </Link>
+
+        <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+          <Link to="/menu" className="navbar-link">
+            Meni
+          </Link>
+          <Link to="/orders" className="navbar-link">
+            Porudžbine
           </Link>
 
-          
-          <div className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
-            <Link to="/menu" className="navbar-link">Meni</Link>
-            <Link to="/orders" className="navbar-link">Porudžbine</Link>
-
-            {user?.role === "admin" && (
-              <Link to="/dashboard" className="navbar-link">Admin Panel</Link>
-            )}
-
-            <Link to="/cart" className="navbar-cart">
-              <ShoppingCart size={20} />
-              {cartCount > 0 && (
-                <span className="cart-count">{cartCount}</span>
-              )}
+          {user?.role === 'admin' && (
+            <Link to="/dashboard" className="navbar-link">
+              Admin Panel
             </Link>
+          )}
 
-            {user ? (
-              <>
-                <span className="navbar-username">Zdravo, {user.name}</span>
-                <button className="navbar-button logout">Logout</button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="navbar-link">Prijava</Link>
-                <Link to="/register" className="navbar-button register">
-                  Registracija
-                </Link>
-              </>
-            )}
-          </div>
+          <Link to="/cart" className="navbar-cart">
+            <ShoppingCart size={20} />
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </Link>
 
-          
-          <button className="navbar-toggle" onClick={toggleMenu}>
-            ☰
-          </button>
+          {isAuthenticated ? (
+            <>
+              <span className="navbar-username">Zdravo, {user.name}</span>
+              <button className="navbar-button logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="navbar-link">
+                Prijava
+              </Link>
+              <Link to="/register" className="navbar-button register">
+                Registracija
+              </Link>
+            </>
+          )}
         </div>
-      </nav>
 
+        <button className="navbar-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
+      </div>
+    </nav>
+  );
+}
 
-    ); 
-
-} 
-
-export default NavBar 
+export default NavBar;
