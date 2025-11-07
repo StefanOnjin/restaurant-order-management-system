@@ -12,7 +12,8 @@ function Register() {
     email: '',
     password: '',
     confirmPassword: '',
-    phone: ''
+    phone: '', 
+    role: 'customer'
   });
 
   const [error, setError] = useState('');
@@ -96,6 +97,46 @@ function Register() {
         )}
 
         <form onSubmit={handleSubmit} className="auth-form">
+
+          <div className="form-group">
+            <label htmlFor="role">Tip naloga</label>
+            <div className="role-selector">
+              <label className={`role-option ${formData.role === 'customer' ? 'selected' : ''}`}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="customer"
+                  checked={formData.role === 'customer'}
+                  onChange={handleChange}
+                />
+                <div className="role-content">
+                  <span className="role-icon">👤</span>
+                  <div>
+                    <div className="role-title">Kupac</div>
+                    <div className="role-description">Naručujem hranu</div>
+                  </div>
+                </div>
+              </label>
+
+              <label className={`role-option ${formData.role === 'staff' ? 'selected' : ''}`}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="staff"
+                  checked={formData.role === 'staff'}
+                  onChange={handleChange}
+                />
+                <div className="role-content">
+                  <span className="role-icon">👨‍🍳</span>
+                  <div>
+                    <div className="role-title">Osoblje</div>
+                    <div className="role-description">Radim u restoranu</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
           <div className="form-group">
             <label htmlFor="name">Ime i prezime</label>
             <input
