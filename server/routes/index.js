@@ -5,11 +5,11 @@ const router = express.Router();
  const userRoutes = require('./userRoutes');
  router.use('/users', userRoutes);
 
-// const menuRoutes = require('./menuRoutes');
-// router.use('/menu', menuRoutes);
 
-// const orderRoutes = require('./orderRoutes');
-// router.use('/orders', orderRoutes);
+//const menuRoutes = require('./menuRoutes');
+//router.use('/menu', menuRoutes);
+
+
 
 const testRoutes = require('./testRoutes'); 
 router.use('/test', testRoutes); 
