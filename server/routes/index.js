@@ -6,6 +6,10 @@ const router = express.Router();
  router.use('/users', userRoutes);
 
 
+const categoryRoutes = require('./categoryRoutes'); 
+router.use('/category', categoryRoutes) 
+
+
 //const menuRoutes = require('./menuRoutes');
 //router.use('/menu', menuRoutes);
 
