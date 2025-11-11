@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 
- const userRoutes = require('./userRoutes');
- router.use('/users', userRoutes);
+const userRoutes = require('./userRoutes');
+router.use('/users', userRoutes);
 
 
 const categoryRoutes = require('./categoryRoutes'); 
 router.use('/category', categoryRoutes) 
 
 
-//const menuRoutes = require('./menuRoutes');
-//router.use('/menu', menuRoutes);
+const menuRoutes = require('./menuRoutes');
+router.use('/menu', menuRoutes);
 
 
 

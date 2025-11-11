@@ -8,6 +8,7 @@ import TestComponent from "./components/TestComponent.jsx"
 import './App.css'
 import { AuthProvider } from './components/AuthContext.jsx'
 import Register from './components/Register.jsx'
+import MenuList from './components/MenuList.jsx'
 
 function App() { 
   const [messages, setMessages] = useState([]); 
@@ -21,24 +22,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-
         <NavBar /> 
-
       <main>
         <Routes>
-          <Route 
-            path="/" 
-            element={
-              <div>
-                <h2>Odgovor sa servera:</h2>
-                <ul>
-                  {messages.map(item => (
-                    <li key={item.id}>{item.message}</li>
-                  ))}
-                </ul>
-              </div>
-            } 
-          />
+          <Route path="/" element={<MenuList />} /> 
+          <Route path="/menu" element={<MenuList />} />  
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/test" element={<TestComponent />} />
