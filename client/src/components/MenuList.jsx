@@ -34,7 +34,7 @@ const MenuList = () => {
         {menuItems.map((item) => (
             <div key={item.id} className="menu-card">
             <img
-                src={item.image_url}
+                src={item.image_url || './src/images/default_food.jpeg'}
                 alt={item.name}
                 className="menu-image"
             />
