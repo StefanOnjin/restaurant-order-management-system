@@ -1,20 +1,24 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/AuthContext';
+import { useCart } from "../context/CartContext"; 
 import './NavBar.css';
 
-function NavBar({ cartCount }) {
+function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const { getCartCount } = useCart(); 
 
+  const navigate = useNavigate();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
+
+  const cartCount = getCartCount(); 
 
   return (
     <nav className="navbar">
@@ -39,7 +43,9 @@ function NavBar({ cartCount }) {
 
           <Link to="/cart" className="navbar-cart">
             <ShoppingCart size={20} />
-            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+              {cartCount > 0 && ( 
+                <span className="cart-count">{cartCount}</span>
+              )}
           </Link>
 
           {isAuthenticated ? (

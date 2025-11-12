@@ -3,10 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react"; 
 import "./MenuList.css"; 
 import axios from "axios";
+import { useCart } from "../context/CartContext"; 
+
 
 const MenuList = () => {
     const [menuItems, setMenuItems] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); 
+    const { addToCart } = useCart(); 
     
     useEffect(() => {
     const fetchMenu = async () => {
@@ -27,6 +30,11 @@ const MenuList = () => {
     return <p className="loading-text">Učitavanje jela...</p>;
     }
 
+    const handleAddToCart = (item) => {
+        addToCart(item);
+        alert(`${item.name} dodato u korpu!`); 
+    }; 
+
     return (
     <div className="menu-container">
         <h2 className="menu-title">Naš Meni</h2>
@@ -42,6 +50,10 @@ const MenuList = () => {
             <p className="menu-description">{item.description}</p>
             <p className="menu-price">{item.price} RSD</p>
             <p className="menu-category">{item.category_name}</p>
+            <button className="menu-button"
+                    onClick={() => handleAddToCart(item)}>
+                        Dodaj u korpu
+            </button>
             </div>
         ))}
         </div>
