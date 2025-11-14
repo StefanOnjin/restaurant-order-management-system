@@ -82,3 +82,8 @@
   color: #a07355;
   font-style: italic;
 }
+
+.menu-button {
+  color: black; 
+  background-color: #e67e22;
+}
